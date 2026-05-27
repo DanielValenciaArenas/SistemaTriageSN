@@ -1,0 +1,35 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-header">
+      <div class="logo-circle">🎓</div>
+      <h1>Log In</h1>
+      <p>Sistema de Triage Académico — UniQuindío</p>
+    </div>
+
+    <div class="auth-body">
+      @if (error) {
+      <div class="alert-error">⚠️ {{ error }}</div>
+      }
+
+      <div class="field">
+        <label>Correo institucional</label>
+        <input type="email" [(ngModel)]="correo" placeholder="usuario@uniquindio.edu.co" [disabled]="loading" />
+      </div>
+
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" [(ngModel)]="password" placeholder="••••••••" [disabled]="loading" (keyup.enter)="login()" />
+      </div>
+
+      <button class="btn btn-primary btn-full" (click)="login()" [disabled]="loading">
+        @if (loading) { Ingresando... } @else { Ingresar }
+      </button>
+
+      <p class="auth-link">
+        ¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a>
+      </p>
+    </div>
+
+  </div>
+</div>

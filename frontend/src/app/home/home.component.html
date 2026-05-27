@@ -1,0 +1,65 @@
+<div class="home">
+
+  <div class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">Sistema Académico</span>
+      <h1>Bienvenido, {{ auth.getNombre() }} 👋</h1>
+      <p>Gestiona tus solicitudes académicas de forma rápida, organizada y con seguimiento en tiempo real.</p>
+      <div class="hero-actions">
+        <a routerLink="/solicitudes" class="btn btn-primary">📋 Ver mis solicitudes</a>
+        <a routerLink="/solicitudes/nueva" class="btn btn-outline">✏️ Nueva solicitud</a>
+      </div>
+    </div>
+    <div class="hero-illustration">🎓</div>
+  </div>
+
+  <div class="cards-grid">
+
+    <div class="info-card">
+      <div class="info-icon">📋</div>
+      <h3>Mis solicitudes</h3>
+      <p>Consulta el estado de todas tus solicitudes académicas y su historial de cambios.</p>
+      <a routerLink="/solicitudes" class="btn btn-outline">Ver solicitudes →</a>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">✏️</div>
+      <h3>Nueva solicitud</h3>
+      <p>Registra una nueva solicitud de homologación, cupo, cancelación u otra gestión académica.</p>
+      <a routerLink="/solicitudes/nueva" class="btn btn-outline">Crear solicitud →</a>
+    </div>
+
+    @if (auth.isAdmin()) {
+    <div class="info-card info-card--admin">
+      <div class="info-icon">👥</div>
+      <h3>Gestión de usuarios</h3>
+      <p>Administra los usuarios del sistema, asigna roles y gestiona el acceso.</p>
+      <a routerLink="/usuarios" class="btn btn-outline">Ver usuarios →</a>
+    </div>
+
+    <div class="info-card info-card--admin">
+      <div class="info-icon">🤖</div>
+      <h3>Asistente IA</h3>
+      <p>Usa inteligencia artificial para sugerir clasificaciones y generar resúmenes de solicitudes.</p>
+      <a routerLink="/ia" class="btn btn-outline">Abrir IA →</a>
+    </div>
+    }
+
+  </div>
+
+  <div class="estados-info">
+    <h3>Estados de una solicitud</h3>
+    <div class="estados-list">
+      <span class="badge badge-registrada">Registrada</span>
+      <span class="arrow">→</span>
+      <span class="badge badge-clasificada">Clasificada</span>
+      <span class="arrow">→</span>
+      <span class="badge badge-en_atencion">En atención</span>
+      <span class="arrow">→</span>
+      <span class="badge badge-atendida">Atendida</span>
+      <span class="arrow">→</span>
+      <span class="badge badge-cerrada">Cerrada</span>
+    </div>
+  </div>
+
+</div>

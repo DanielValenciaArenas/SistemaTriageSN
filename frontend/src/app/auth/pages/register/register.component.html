@@ -1,0 +1,53 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-header">
+      <div class="logo-circle">🎓</div>
+      <h1>Crear cuenta</h1>
+      <p>Sistema de Triage Académico — UniQuindío</p>
+    </div>
+
+    <div class="auth-body">
+      @if (error) {
+      <div class="alert-error">⚠️ {{ error }}</div>
+      }
+
+      <div class="field">
+        <label>Nombre completo</label>
+        <input type="text" [(ngModel)]="nombre" placeholder="Tu nombre" [disabled]="loading" />
+      </div>
+
+      <div class="field">
+        <label>Correo institucional</label>
+        <input type="email" [(ngModel)]="correo" placeholder="usuario@uniquindio.edu.co" [disabled]="loading" />
+      </div>
+
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" [(ngModel)]="password" placeholder="Mínimo 6 caracteres" [disabled]="loading" />
+      </div>
+
+      <div class="field">
+        <label>Confirmar contraseña</label>
+        <input type="password" [(ngModel)]="confirmar" placeholder="Repite tu contraseña" [disabled]="loading" (keyup.enter)="register()" />
+      </div>
+
+      <div class="field">
+        <label>Tipo de usuario</label>
+        <select [(ngModel)]="rol">
+          <option value="ESTUDIANTE">Estudiante</option>
+          <option value="ADMINISTRATIVO">Administrativo</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary btn-full" (click)="register()" [disabled]="loading">
+        @if (loading) { Registrando... } @else { Crear cuenta }
+      </button>
+
+      <p class="auth-link">
+        ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a>
+      </p>
+    </div>
+
+  </div>
+</div>

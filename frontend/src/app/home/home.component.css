@@ -1,0 +1,85 @@
+.home { padding: 2rem; max-width: 1100px; margin: 0 auto; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+  border-radius: 16px;
+  padding: 3rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  box-shadow: var(--sombra-md);
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 99px;
+  padding: .25rem .85rem;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero-content h1 { font-size: 2rem; margin-bottom: .75rem; }
+.hero-content p  { opacity: .85; font-size: 1rem; max-width: 480px; margin-bottom: 1.5rem; }
+
+.hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+.hero-actions .btn-primary  { background: white; color: var(--verde-oscuro); }
+.hero-actions .btn-primary:hover:not(:disabled) { background: var(--verde-suave); }
+.hero-actions .btn-outline  { border-color: rgba(255,255,255,.6); color: white; }
+.hero-actions .btn-outline:hover:not(:disabled) { background: rgba(255,255,255,.12); }
+
+.hero-illustration { font-size: 5rem; opacity: .3; }
+
+/* Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.info-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  box-shadow: var(--sombra-sm);
+  transition: box-shadow .2s, transform .2s;
+}
+
+.info-card:hover { box-shadow: var(--sombra-md); transform: translateY(-2px); }
+.info-card--admin { border-left: 3px solid var(--verde-medio); }
+
+.info-icon { font-size: 2rem; }
+.info-card h3 { font-size: 1rem; color: #1a202c; }
+.info-card p  { font-size: .875rem; color: var(--gris-texto); flex: 1; }
+
+/* Estados */
+.estados-info {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+  box-shadow: var(--sombra-sm);
+}
+
+.estados-info h3 { font-size: .95rem; color: var(--gris-texto); margin-bottom: 1rem; font-weight: 600; }
+
+.estados-list {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.arrow { color: var(--gris-borde); font-size: 1.1rem; }

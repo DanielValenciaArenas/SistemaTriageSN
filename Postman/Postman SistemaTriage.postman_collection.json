@@ -1,0 +1,1824 @@
+{
+  "info": {
+    "_postman_id": "c7a0c9c3-b93d-4ded-8edc-199975630bc9",
+    "name": "Postman SistemaTriage",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52839496",
+    "_collection_link": "https://go.postman.co/collection/52839496-c7a0c9c3-b93d-4ded-8edc-199975630bc9?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "Crear usuario estudiante",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Timmy Torner\",\r\n  \"correo\": \"timmy@uniquindio.edu.co\",\r\n  \"rol\": \"ESTUDIANTE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "usuarios"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Crear usuario estudiante",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nombre\": \"Timmy Torner\",\r\n  \"correo\": \"timmy@uniquindio.edu.co\",\r\n  \"rol\": \"ESTUDIANTE\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/usuarios",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "usuarios"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 05:24:31 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n    \"nombre\": \"Timmy Torner\",\n    \"correo\": \"timmy@uniquindio.edu.co\",\n    \"rol\": \"ESTUDIANTE\",\n    \"activo\": true,\n    \"fechaRegistro\": \"2026-04-14T00:24:31.0525186\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Crear usuario administrativo",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Julio Cesar\",\r\n  \"correo\": \"julius@uniquindio.edu.co\",\r\n  \"rol\": \"ADMINISTRATIVO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "usuarios"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Crear usuario administrativo",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nombre\": \"Julio Cesar\",\r\n  \"correo\": \"julius@uniquindio.edu.co\",\r\n  \"rol\": \"ADMINISTRATIVO\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/usuarios",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "usuarios"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 05:25:25 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"46e07123-d2bc-4aae-8e1f-67d1b73886a6\",\n    \"nombre\": \"Julio Cesar\",\n    \"correo\": \"julius@uniquindio.edu.co\",\n    \"rol\": \"ADMINISTRATIVO\",\n    \"activo\": true,\n    \"fechaRegistro\": \"2026-04-14T00:25:25.4360709\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Listar usuarios",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Carlos Mendez\",\r\n  \"correo\": \"carlos@uniquindio.edu.co\",\r\n  \"rol\": \"ADMINISTRATIVO\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "usuarios"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Listar usuarios",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nombre\": \"Carlos Mendez\",\r\n  \"correo\": \"carlos@uniquindio.edu.co\",\r\n  \"rol\": \"ADMINISTRATIVO\"\r\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8080/usuarios",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "usuarios"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 05:26:09 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": \"bfee9227-edc1-4b9e-b3c1-3ed6e32efdfa\",\n        \"nombre\": \"Carlitos Mendezito\",\n        \"correo\": \"carlos@uniquindio.edu.co\",\n        \"rol\": \"ADMINISTRATIVO\",\n        \"activo\": false,\n        \"fechaRegistro\": \"2026-04-13T20:35:39.658587\"\n    },\n    {\n        \"id\": \"46e07123-d2bc-4aae-8e1f-67d1b73886a6\",\n        \"nombre\": \"Julio Cesar\",\n        \"correo\": \"julius@uniquindio.edu.co\",\n        \"rol\": \"ADMINISTRATIVO\",\n        \"activo\": true,\n        \"fechaRegistro\": \"2026-04-14T00:25:25.43607\"\n    },\n    {\n        \"id\": \"df92d4f5-5e0d-4e38-b3f6-817b85ea6566\",\n        \"nombre\": \"Monica monalisa\",\n        \"correo\": \"monica@uniquindio.edu.co\",\n        \"rol\": \"ADMINISTRATIVO\",\n        \"activo\": true,\n        \"fechaRegistro\": \"2026-04-13T23:30:59.543392\"\n    },\n    {\n        \"id\": \"44410eaa-35f9-4e9e-85ac-c75aa854ad91\",\n        \"nombre\": \"Ana Torres\",\n        \"correo\": \"ana@uniquindio.edu.co\",\n        \"rol\": \"ESTUDIANTE\",\n        \"activo\": true,\n        \"fechaRegistro\": \"2026-04-13T20:25:12.783115\"\n    },\n    {\n        \"id\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n        \"nombre\": \"Timmy Torner\",\n        \"correo\": \"timmy@uniquindio.edu.co\",\n        \"rol\": \"ESTUDIANTE\",\n        \"activo\": true,\n        \"fechaRegistro\": \"2026-04-14T00:24:31.052518\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Obtener usuario por ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Carlos Mendez\",\r\n  \"correo\": \"carlos@uniquindio.edu.co\",\r\n  \"rol\": \"ADMINISTRATIVO\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/usuarios/44410eaa-35f9-4e9e-85ac-c75aa854ad91",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "usuarios",
+                "44410eaa-35f9-4e9e-85ac-c75aa854ad91"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Obtener usuario por ID",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nombre\": \"Carlos Mendez\",\r\n  \"correo\": \"carlos@uniquindio.edu.co\",\r\n  \"rol\": \"ADMINISTRATIVO\"\r\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8080/usuarios/44410eaa-35f9-4e9e-85ac-c75aa854ad91",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "usuarios",
+                    "44410eaa-35f9-4e9e-85ac-c75aa854ad91"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 05:27:34 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"44410eaa-35f9-4e9e-85ac-c75aa854ad91\",\n    \"nombre\": \"Ana Torres\",\n    \"correo\": \"ana@uniquindio.edu.co\",\n    \"rol\": \"ESTUDIANTE\",\n    \"activo\": true,\n    \"fechaRegistro\": \"2026-04-13T20:25:12.783115\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Actualizar usuario",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Carloso Mendozo\",\r\n  \"correo\": \"carlos@uniquindio.edu.co\",\r\n  \"rol\": \"ADMINISTRATIVO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/usuarios/bfee9227-edc1-4b9e-b3c1-3ed6e32efdfa",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "usuarios",
+                "bfee9227-edc1-4b9e-b3c1-3ed6e32efdfa"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Actualizar usuario",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nombre\": \"Carloso Mendozo\",\r\n  \"correo\": \"carlos@uniquindio.edu.co\",\r\n  \"rol\": \"ADMINISTRATIVO\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/usuarios/bfee9227-edc1-4b9e-b3c1-3ed6e32efdfa",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "usuarios",
+                    "bfee9227-edc1-4b9e-b3c1-3ed6e32efdfa"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 05:28:29 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"bfee9227-edc1-4b9e-b3c1-3ed6e32efdfa\",\n    \"nombre\": \"Carloso Mendozo\",\n    \"correo\": \"carlos@uniquindio.edu.co\",\n    \"rol\": \"ADMINISTRATIVO\",\n    \"activo\": false,\n    \"fechaRegistro\": \"2026-04-13T20:35:39.658587\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Eliminar usuario",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Carlos Mendez\",\r\n  \"correo\": \"carlos@uniquindio.edu.co\",\r\n  \"rol\": \"ADMINISTRATIVO\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/usuarios/44410eaa-35f9-4e9e-85ac-c75aa854ad91",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "usuarios",
+                "44410eaa-35f9-4e9e-85ac-c75aa854ad91"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Eliminar usuario",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nombre\": \"Carlos Mendez\",\r\n  \"correo\": \"carlos@uniquindio.edu.co\",\r\n  \"rol\": \"ADMINISTRATIVO\"\r\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8080/usuarios/44410eaa-35f9-4e9e-85ac-c75aa854ad91",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "usuarios",
+                    "44410eaa-35f9-4e9e-85ac-c75aa854ad91"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 05:29:33 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Solicitudes",
+      "item": [
+        {
+          "name": "Registrar Solicitud",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Solicitud de cupo adicional\",\r\n  \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\r\n  \"canalOrigen\": \"PORTAL_WEB\",\r\n  \"idSolicitante\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/solicitudes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Registrar Solicitud",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nombre\": \"Solicitud de cupo adicional\",\r\n  \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\r\n  \"canalOrigen\": \"PORTAL_WEB\",\r\n  \"idSolicitante\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:45:42 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"3640d70a-c2f9-4c83-81d8-b5beadb7bf63\",\n    \"nombre\": \"Solicitud de cupo adicional\",\n    \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\n    \"tipoSolicitud\": null,\n    \"canalOrigen\": \"PORTAL_WEB\",\n    \"solicitanteId\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n    \"estado\": \"REGISTRADA\",\n    \"prioridad\": null,\n    \"justificacionPrioridad\": null,\n    \"responsableId\": null,\n    \"fechaRegistro\": \"2026-04-14T10:45:41.8802412\",\n    \"fechaActualizacion\": \"2026-04-14T10:45:41.8802412\",\n    \"fechaCierre\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Listar solicitudes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/solicitudes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Listar solicitudes",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:46:20 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": \"3640d70a-c2f9-4c83-81d8-b5beadb7bf63\",\n        \"nombre\": \"Solicitud de cupo adicional\",\n        \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\n        \"tipoSolicitud\": null,\n        \"canalOrigen\": \"PORTAL_WEB\",\n        \"solicitanteId\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n        \"estado\": \"REGISTRADA\",\n        \"prioridad\": null,\n        \"justificacionPrioridad\": null,\n        \"responsableId\": null,\n        \"fechaRegistro\": \"2026-04-14T10:45:41.880241\",\n        \"fechaActualizacion\": \"2026-04-14T10:45:41.880241\",\n        \"fechaCierre\": null\n    },\n    {\n        \"id\": \"523b0739-567f-4b1f-8d5f-bdcde89b6a56\",\n        \"nombre\": \"Solicitud de cupo adicional\",\n        \"descripcion\": \"Necesito cupo en Bases en Prog. Avanzada para completar mi horario\",\n        \"tipoSolicitud\": \"CUPO\",\n        \"canalOrigen\": \"PORTAL_WEB\",\n        \"solicitanteId\": \"44410eaa-35f9-4e9e-85ac-c75aa854ad91\",\n        \"estado\": \"CERRADA\",\n        \"prioridad\": \"ALTA\",\n        \"justificacionPrioridad\": \"El estudiante está en riesgo de perder el semestre por falta del cupo\",\n        \"responsableId\": \"df92d4f5-5e0d-4e38-b3f6-817b85ea6566\",\n        \"fechaRegistro\": \"2026-04-13T22:52:36.418061\",\n        \"fechaActualizacion\": \"2026-04-14T00:04:55.579571\",\n        \"fechaCierre\": \"2026-04-14T00:04:55.579571\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Listar solicitudes filtro por estado",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/solicitudes?estado=CERRADA",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes"
+              ],
+              "query": [
+                {
+                  "key": "estado",
+                  "value": "CERRADA",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Listar solicitudes filtro por estado",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes?estado=CERRADA",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes"
+                  ],
+                  "query": [
+                    {
+                      "key": "estado",
+                      "value": "CERRADA"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:47:03 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": \"523b0739-567f-4b1f-8d5f-bdcde89b6a56\",\n        \"nombre\": \"Solicitud de cupo adicional\",\n        \"descripcion\": \"Necesito cupo en Bases en Prog. Avanzada para completar mi horario\",\n        \"tipoSolicitud\": \"CUPO\",\n        \"canalOrigen\": \"PORTAL_WEB\",\n        \"solicitanteId\": \"44410eaa-35f9-4e9e-85ac-c75aa854ad91\",\n        \"estado\": \"CERRADA\",\n        \"prioridad\": \"ALTA\",\n        \"justificacionPrioridad\": \"El estudiante está en riesgo de perder el semestre por falta del cupo\",\n        \"responsableId\": \"df92d4f5-5e0d-4e38-b3f6-817b85ea6566\",\n        \"fechaRegistro\": \"2026-04-13T22:52:36.418061\",\n        \"fechaActualizacion\": \"2026-04-14T00:04:55.579571\",\n        \"fechaCierre\": \"2026-04-14T00:04:55.579571\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Listar solicitudes filtro por tipo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/solicitudes?tipo=HOMOLOGACION",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes"
+              ],
+              "query": [
+                {
+                  "key": "tipo",
+                  "value": "HOMOLOGACION",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Listar solicitudes filtro por tipo",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes?tipo=HOMOLOGACION",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes"
+                  ],
+                  "query": [
+                    {
+                      "key": "tipo",
+                      "value": "HOMOLOGACION"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:47:59 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[]"
+            }
+          ]
+        },
+        {
+          "name": "Listar solicitudes filtro por prioridad",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/solicitudes?prioridad=BAJA",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes"
+              ],
+              "query": [
+                {
+                  "key": "prioridad",
+                  "value": "BAJA",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Listar solicitudes filtro por prioridad",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes?prioridad=BAJA",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes"
+                  ],
+                  "query": [
+                    {
+                      "key": "prioridad",
+                      "value": "BAJA"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:48:22 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[]"
+            }
+          ]
+        },
+        {
+          "name": "Obtener solicitud por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes",
+                "3640d70a-c2f9-4c83-81d8-b5beadb7bf63"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Obtener solicitud por ID",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes",
+                    "3640d70a-c2f9-4c83-81d8-b5beadb7bf63"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:50:07 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"3640d70a-c2f9-4c83-81d8-b5beadb7bf63\",\n    \"nombre\": \"Solicitud de cupo adicional\",\n    \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\n    \"tipoSolicitud\": null,\n    \"canalOrigen\": \"PORTAL_WEB\",\n    \"solicitanteId\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n    \"estado\": \"REGISTRADA\",\n    \"prioridad\": null,\n    \"justificacionPrioridad\": null,\n    \"responsableId\": null,\n    \"fechaRegistro\": \"2026-04-14T10:45:41.880241\",\n    \"fechaActualizacion\": \"2026-04-14T10:45:41.880241\",\n    \"fechaCierre\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Clasificar solicitud",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tipo\": \"CUPO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/clasificar?actorId=df92d4f5-5e0d-4e38-b3f6-817b85ea6566",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes",
+                "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                "clasificar"
+              ],
+              "query": [
+                {
+                  "key": "actorId",
+                  "value": "df92d4f5-5e0d-4e38-b3f6-817b85ea6566"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Clasificar solicitud",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"tipo\": \"CUPO\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/clasificar?actorId=df92d4f5-5e0d-4e38-b3f6-817b85ea6566",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes",
+                    "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                    "clasificar"
+                  ],
+                  "query": [
+                    {
+                      "key": "actorId",
+                      "value": "df92d4f5-5e0d-4e38-b3f6-817b85ea6566"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:52:41 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"3640d70a-c2f9-4c83-81d8-b5beadb7bf63\",\n    \"nombre\": \"Solicitud de cupo adicional\",\n    \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\n    \"tipoSolicitud\": \"CUPO\",\n    \"canalOrigen\": \"PORTAL_WEB\",\n    \"solicitanteId\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n    \"estado\": \"CLASIFICADA\",\n    \"prioridad\": null,\n    \"justificacionPrioridad\": null,\n    \"responsableId\": null,\n    \"fechaRegistro\": \"2026-04-14T10:45:41.880241\",\n    \"fechaActualizacion\": \"2026-04-14T10:52:40.9718358\",\n    \"fechaCierre\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Priorizar solicitud",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"prioridad\": \"BAJA\",\r\n  \"justificacion\": \"El estudiante solo quiere llenar el horario de clases\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/priorizar?actorId=df92d4f5-5e0d-4e38-b3f6-817b85ea6566",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes",
+                "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                "priorizar"
+              ],
+              "query": [
+                {
+                  "key": "actorId",
+                  "value": "df92d4f5-5e0d-4e38-b3f6-817b85ea6566"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Priorizar solicitud",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"prioridad\": \"BAJA\",\r\n  \"justificacion\": \"El estudiante solo quiere llenar el horario de clases\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/priorizar?actorId=df92d4f5-5e0d-4e38-b3f6-817b85ea6566",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes",
+                    "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                    "priorizar"
+                  ],
+                  "query": [
+                    {
+                      "key": "actorId",
+                      "value": "df92d4f5-5e0d-4e38-b3f6-817b85ea6566"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:53:57 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"3640d70a-c2f9-4c83-81d8-b5beadb7bf63\",\n    \"nombre\": \"Solicitud de cupo adicional\",\n    \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\n    \"tipoSolicitud\": \"CUPO\",\n    \"canalOrigen\": \"PORTAL_WEB\",\n    \"solicitanteId\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n    \"estado\": \"CLASIFICADA\",\n    \"prioridad\": \"BAJA\",\n    \"justificacionPrioridad\": \"El estudiante solo quiere llenar el horario de clases\",\n    \"responsableId\": null,\n    \"fechaRegistro\": \"2026-04-14T10:45:41.880241\",\n    \"fechaActualizacion\": \"2026-04-14T10:53:57.5239035\",\n    \"fechaCierre\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Asignar responsable",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"responsableId\": \"46e07123-d2bc-4aae-8e1f-67d1b73886a6\",\r\n  \"observacion\": \"Asignado al encargado de cupos de Ing. Sistemas\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/asignar?actorId=df92d4f5-5e0d-4e38-b3f6-817b85ea6566",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes",
+                "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                "asignar"
+              ],
+              "query": [
+                {
+                  "key": "actorId",
+                  "value": "df92d4f5-5e0d-4e38-b3f6-817b85ea6566"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Asignar responsable",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"responsableId\": \"46e07123-d2bc-4aae-8e1f-67d1b73886a6\",\r\n  \"observacion\": \"Asignado al encargado de cupos de Ing. Sistemas\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/asignar?actorId=df92d4f5-5e0d-4e38-b3f6-817b85ea6566",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes",
+                    "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                    "asignar"
+                  ],
+                  "query": [
+                    {
+                      "key": "actorId",
+                      "value": "df92d4f5-5e0d-4e38-b3f6-817b85ea6566"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:56:13 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"3640d70a-c2f9-4c83-81d8-b5beadb7bf63\",\n    \"nombre\": \"Solicitud de cupo adicional\",\n    \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\n    \"tipoSolicitud\": \"CUPO\",\n    \"canalOrigen\": \"PORTAL_WEB\",\n    \"solicitanteId\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n    \"estado\": \"CLASIFICADA\",\n    \"prioridad\": \"BAJA\",\n    \"justificacionPrioridad\": \"El estudiante solo quiere llenar el horario de clases\",\n    \"responsableId\": \"46e07123-d2bc-4aae-8e1f-67d1b73886a6\",\n    \"fechaRegistro\": \"2026-04-14T10:45:41.880241\",\n    \"fechaActualizacion\": \"2026-04-14T10:56:13.2679734\",\n    \"fechaCierre\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Atender solicitud (CLASIFICADA -> EN_ATENCION)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"observacion\": \"Se esta verificando la disponibilidad de cupos en el sistema académico\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/atender?actorId=46e07123-d2bc-4aae-8e1f-67d1b73886a6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes",
+                "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                "atender"
+              ],
+              "query": [
+                {
+                  "key": "actorId",
+                  "value": "46e07123-d2bc-4aae-8e1f-67d1b73886a6"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Atender solicitud (CLASIFICADA -> EN_ATENCION)",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"observacion\": \"Se esta verificando la disponibilidad de cupos en el sistema académico\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/atender?actorId=46e07123-d2bc-4aae-8e1f-67d1b73886a6",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes",
+                    "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                    "atender"
+                  ],
+                  "query": [
+                    {
+                      "key": "actorId",
+                      "value": "46e07123-d2bc-4aae-8e1f-67d1b73886a6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:57:47 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"3640d70a-c2f9-4c83-81d8-b5beadb7bf63\",\n    \"nombre\": \"Solicitud de cupo adicional\",\n    \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\n    \"tipoSolicitud\": \"CUPO\",\n    \"canalOrigen\": \"PORTAL_WEB\",\n    \"solicitanteId\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n    \"estado\": \"EN_ATENCION\",\n    \"prioridad\": \"BAJA\",\n    \"justificacionPrioridad\": \"El estudiante solo quiere llenar el horario de clases\",\n    \"responsableId\": \"46e07123-d2bc-4aae-8e1f-67d1b73886a6\",\n    \"fechaRegistro\": \"2026-04-14T10:45:41.880241\",\n    \"fechaActualizacion\": \"2026-04-14T10:57:47.7651957\",\n    \"fechaCierre\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Atender solicitud (EN_ATENCION -> ATENDIDA)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"observacion\": \"Se volvio a verificar disponibilidad de cupos en el sistema académico.\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/atender?actorId=46e07123-d2bc-4aae-8e1f-67d1b73886a6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes",
+                "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                "atender"
+              ],
+              "query": [
+                {
+                  "key": "actorId",
+                  "value": "46e07123-d2bc-4aae-8e1f-67d1b73886a6"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Atender solicitud (EN_ATENCION -> ATENDIDA)",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"observacion\": \"Se volvio a verificar disponibilidad de cupos en el sistema académico.\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/atender?actorId=46e07123-d2bc-4aae-8e1f-67d1b73886a6",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes",
+                    "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                    "atender"
+                  ],
+                  "query": [
+                    {
+                      "key": "actorId",
+                      "value": "46e07123-d2bc-4aae-8e1f-67d1b73886a6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 15:59:28 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"3640d70a-c2f9-4c83-81d8-b5beadb7bf63\",\n    \"nombre\": \"Solicitud de cupo adicional\",\n    \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\n    \"tipoSolicitud\": \"CUPO\",\n    \"canalOrigen\": \"PORTAL_WEB\",\n    \"solicitanteId\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n    \"estado\": \"ATENDIDA\",\n    \"prioridad\": \"BAJA\",\n    \"justificacionPrioridad\": \"El estudiante solo quiere llenar el horario de clases\",\n    \"responsableId\": \"46e07123-d2bc-4aae-8e1f-67d1b73886a6\",\n    \"fechaRegistro\": \"2026-04-14T10:45:41.880241\",\n    \"fechaActualizacion\": \"2026-04-14T10:59:28.4664816\",\n    \"fechaCierre\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Cerrar solicitud",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"observacionCierre\": \"No hay cupos, debe esperar el otro semestre. Estudiante notificado por correo.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/cerrar?actorId=46e07123-d2bc-4aae-8e1f-67d1b73886a6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes",
+                "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                "cerrar"
+              ],
+              "query": [
+                {
+                  "key": "actorId",
+                  "value": "46e07123-d2bc-4aae-8e1f-67d1b73886a6"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Cerrar solicitud",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"observacionCierre\": \"No hay cupos, debe esperar el otro semestre. Estudiante notificado por correo.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/cerrar?actorId=46e07123-d2bc-4aae-8e1f-67d1b73886a6",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes",
+                    "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                    "cerrar"
+                  ],
+                  "query": [
+                    {
+                      "key": "actorId",
+                      "value": "46e07123-d2bc-4aae-8e1f-67d1b73886a6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 16:00:38 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"3640d70a-c2f9-4c83-81d8-b5beadb7bf63\",\n    \"nombre\": \"Solicitud de cupo adicional\",\n    \"descripcion\": \"Necesito cupo en Prog. Avanzada para completar mi horario\",\n    \"tipoSolicitud\": \"CUPO\",\n    \"canalOrigen\": \"PORTAL_WEB\",\n    \"solicitanteId\": \"06c4a07b-98ad-47a4-b1f7-cbc977531381\",\n    \"estado\": \"CERRADA\",\n    \"prioridad\": \"BAJA\",\n    \"justificacionPrioridad\": \"El estudiante solo quiere llenar el horario de clases\",\n    \"responsableId\": \"46e07123-d2bc-4aae-8e1f-67d1b73886a6\",\n    \"fechaRegistro\": \"2026-04-14T10:45:41.880241\",\n    \"fechaActualizacion\": \"2026-04-14T11:00:38.082419\",\n    \"fechaCierre\": \"2026-04-14T11:00:38.082419\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Consultar  historial",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/historial",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "solicitudes",
+                "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                "historial"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Consultar  historial",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/solicitudes/3640d70a-c2f9-4c83-81d8-b5beadb7bf63/historial",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "solicitudes",
+                    "3640d70a-c2f9-4c83-81d8-b5beadb7bf63",
+                    "historial"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 16:03:17 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"fecha\": \"2026-04-14T10:53:57.562135\",\n        \"usuario\": \"Monica monalisa\",\n        \"accion\": \"PRIORIZACION\",\n        \"estadoAnterior\": \"CLASIFICADA\",\n        \"estadoNuevo\": \"CLASIFICADA\",\n        \"observacion\": \"Priorizada como BAJA. El estudiante solo quiere llenar el horario de clases\"\n    },\n    {\n        \"fecha\": \"2026-04-14T11:00:38.088339\",\n        \"usuario\": \"Julio Cesar\",\n        \"accion\": \"CIERRE\",\n        \"estadoAnterior\": \"ATENDIDA\",\n        \"estadoNuevo\": \"CERRADA\",\n        \"observacion\": \"No hay cupos, debe esperar el otro semestre. Estudiante notificado por correo.\"\n    },\n    {\n        \"fecha\": \"2026-04-14T10:57:47.76721\",\n        \"usuario\": \"Julio Cesar\",\n        \"accion\": \"ATENCION\",\n        \"estadoAnterior\": \"CLASIFICADA\",\n        \"estadoNuevo\": \"EN_ATENCION\",\n        \"observacion\": \"Se esta verificando la disponibilidad de cupos en el sistema académico\"\n    },\n    {\n        \"fecha\": \"2026-04-14T10:52:41.315507\",\n        \"usuario\": \"Monica monalisa\",\n        \"accion\": \"CLASIFICACION\",\n        \"estadoAnterior\": \"REGISTRADA\",\n        \"estadoNuevo\": \"CLASIFICADA\",\n        \"observacion\": \"Cambio de tipo de solicitud a CUPO\"\n    },\n    {\n        \"fecha\": \"2026-04-14T10:45:41.961371\",\n        \"usuario\": \"Timmy Torner\",\n        \"accion\": \"REGISTRO\",\n        \"estadoAnterior\": null,\n        \"estadoNuevo\": \"REGISTRADA\",\n        \"observacion\": \"Solicitud registrada\"\n    },\n    {\n        \"fecha\": \"2026-04-14T10:59:28.467542\",\n        \"usuario\": \"Julio Cesar\",\n        \"accion\": \"ATENCION\",\n        \"estadoAnterior\": \"EN_ATENCION\",\n        \"estadoNuevo\": \"ATENDIDA\",\n        \"observacion\": \"Se volvio a verificar disponibilidad de cupos en el sistema académico.\"\n    },\n    {\n        \"fecha\": \"2026-04-14T10:56:13.282751\",\n        \"usuario\": \"Monica monalisa\",\n        \"accion\": \"ASIGNACION\",\n        \"estadoAnterior\": \"CLASIFICADA\",\n        \"estadoNuevo\": \"CLASIFICADA\",\n        \"observacion\": \"Asignada a responsable: Julio Cesar\"\n    }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IA",
+      "item": [
+        {
+          "name": "Generar resumen",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"solicitudId\": \"523b0739-567f-4b1f-8d5f-bdcde89b6a56\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/ia/resumen",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "ia",
+                "resumen"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Generar resumen",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"solicitudId\": \"523b0739-567f-4b1f-8d5f-bdcde89b6a56\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/ia/resumen",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "ia",
+                    "resumen"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 05:11:55 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"resumen\": \"=== Resumen de Solicitud Académica ===\\nNombre: Solicitud de cupo adicional\\nTipo: CUPO\\nEstado actual: CERRADA\\nPrioridad: ALTA\\nCanal de origen: PORTAL_WEB\\nSolicitante: Ana Torres\\nResponsable asignado: Monica monalisa\\nFecha de registro: 2026-04-13T22:52:36.418061\\n\\nDescripción: Necesito cupo en Bases en Prog. Avanzada para completar mi horario\\nJustificación de prioridad: El estudiante está en riesgo de perder el semestre por falta del cupo\\n\\nHistorial (7 eventos):\\n  - 2026-04-13T23:31:55.374470 | CLASIFICACION [REGISTRADA → CLASIFICADA] | Cambio de tipo de solicitud a CUPO\\n  - 2026-04-14T00:02:19.495401 | ATENCION [EN_ATENCION → ATENDIDA] | Se volvio a verificar disponibilidad de cupos en el sistema académico\\n  - 2026-04-14T00:04:55.589631 | CIERRE [ATENDIDA → CERRADA] | Cupo asignado exitosamente. Estudiante notificado por correo.\\n  - 2026-04-13T23:47:02.916987 | PRIORIZACION [CLASIFICADA → CLASIFICADA] | Priorizada como ALTA. El estudiante está en riesgo de perder el semestre por falta del cupo\\n  - 2026-04-13T23:57:37.550933 | ATENCION [CLASIFICADA → EN_ATENCION] | Se verificó disponibilidad de cupos en el sistema académico\\n  - 2026-04-13T22:52:36.505088 | REGISTRO | Solicitud registrada\\n  - 2026-04-13T23:52:20.999363 | ASIGNACION [CLASIFICADA → CLASIFICADA] | Asignada a responsable: Monica monalisa\\n\",\n    \"generadoPor\": \"Fallback (reglas)\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Sugerir clasificacion",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"descripcion\": \"Necesito registrar una asignatura que no aparece en mi plan de estudios\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/ia/sugerencias/clasificacion",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "ia",
+                "sugerencias",
+                "clasificacion"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Sugerir clasificacion",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"descripcion\": \"Necesito registrar una asignatura que no aparece en mi plan de estudios\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/ia/sugerencias/clasificacion",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "ia",
+                    "sugerencias",
+                    "clasificacion"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 14 Apr 2026 05:10:00 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"tipoSugerido\": \"REGISTRO_ASIGNATURA\",\n    \"prioridadSugerida\": \"MEDIA\",\n    \"confianza\": 0.7,\n    \"justificacion\": \"[Reglas] Palabra clave 'asignatura' sugiere REGISTRO_ASIGNATURA.\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    },
+    {
+      "key": "estudianteId",
+      "value": ""
+    },
+    {
+      "key": "adminId",
+      "value": ""
+    },
+    {
+      "key": "solicitudId",
+      "value": ""
+    }
+  ]
+}

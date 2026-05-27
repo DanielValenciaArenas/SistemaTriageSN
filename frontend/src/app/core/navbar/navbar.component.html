@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <a class="navbar-brand" routerLink="/home">
+    <span class="brand-icon">🎓</span>
+    <span class="brand-text">Triage UniQuindío</span>
+  </a>
+
+  <div class="navbar-links">
+    <a routerLink="/home"         routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Inicio</a>
+    <a routerLink="/solicitudes"  routerLinkActive="active">Solicitudes</a>
+    @if (auth.isAdmin()) {
+    <a routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
+    <a routerLink="/ia"       routerLinkActive="active">IA</a>
+    }
+  </div>
+
+  <div class="navbar-user">
+    <div class="user-info">
+      <span class="user-name">{{ auth.getNombre() }}</span>
+      <span class="user-role">{{ auth.getRol() }}</span>
+    </div>
+    <button class="btn-logout" (click)="auth.logout()">Salir</button>
+  </div>
+</nav>
