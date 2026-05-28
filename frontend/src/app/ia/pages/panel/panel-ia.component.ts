@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IaService, SugerenciaIA, ResumenIA } from '../../ia.service';
@@ -23,7 +23,12 @@ export class PanelIaComponent implements OnInit {
   resumen: ResumenIA | null = null;
   errorResumen = '';
 
-  constructor(private iaService: IaService, private solicitudService: SolicitudService) {}
+  constructor(
+    private iaService: IaService,
+    private solicitudService: SolicitudService,
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone
+  ) {}
 
   ngOnInit() {
     this.solicitudService.listarMisSolicitudes().subscribe({
@@ -40,12 +45,18 @@ export class PanelIaComponent implements OnInit {
 
     this.iaService.sugerir(this.descripcion).subscribe({
       next: (res) => {
-        this.sugerencia = res;
-        this.cargandoSugerencia = false;
+        this.zone.run(() => {
+          this.sugerencia = res;
+          this.cargandoSugerencia = false;
+          this.cdr.detectChanges();
+        });
       },
       error: () => {
-        this.errorSugerencia = 'Ocurrió un error al obtener la sugerencia de la IA.';
-        this.cargandoSugerencia = false;
+        this.zone.run(() => {
+          this.errorSugerencia = 'Ocurrió un error al obtener la sugerencia de la IA.';
+          this.cargandoSugerencia = false;
+          this.cdr.detectChanges();
+        });
       }
     });
   }
@@ -58,12 +69,18 @@ export class PanelIaComponent implements OnInit {
 
     this.iaService.resumir(this.solicitudId).subscribe({
       next: (res) => {
-        this.resumen = res;
-        this.cargandoResumen = false;
+        this.zone.run(() => {
+          this.resumen = res;
+          this.cargandoResumen = false;
+          this.cdr.detectChanges();
+        });
       },
       error: () => {
-        this.errorResumen = 'Ocurrió un error al generar el resumen de la solicitud.';
-        this.cargandoResumen = false;
+        this.zone.run(() => {
+          this.errorResumen = 'Ocurrió un error al generar el resumen de la solicitud.';
+          this.cargandoResumen = false;
+          this.cdr.detectChanges();
+        });
       }
     });
   }
