@@ -126,8 +126,18 @@
                 <label>Estado</label>
                 <select [(ngModel)]="nuevoEstado">
                   <option value="">Seleccione un estado</option>
-                  <option value="EN_ATENCION">En atención</option>
-                  <option value="CERRADA">Cerrada</option>
+
+                  @if (solicitud()!.estado === 'REGISTRADA' || solicitud()!.estado === 'CLASIFICADA') {
+                    <option value="EN_ATENCION">En atención</option>
+                  }
+
+                  @if (solicitud()!.estado === 'EN_ATENCION') {
+                    <option value="ATENDIDA">Atendida</option>
+                  }
+
+                  @if (solicitud()!.estado === 'ATENDIDA') {
+                    <option value="CERRADA">Cerrada</option>
+                  }
                 </select>
 
                 <label>Observación</label>

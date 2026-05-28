@@ -183,7 +183,7 @@ export class DetalleSolicitudComponent implements OnInit {
       return;
     }
 
-    if (this.nuevoEstado === 'EN_ATENCION') {
+    if (this.nuevoEstado === 'EN_ATENCION' || this.nuevoEstado === 'ATENDIDA') {
       this.solicitudService.atender(s.id, this.observacionEstado).subscribe({
         next: (updated) => this.finalizarCambioEstado(updated, s.id, 'Estado actualizado correctamente.'),
         error: () => this.mostrarError('Error al actualizar el estado.')
@@ -194,13 +194,14 @@ export class DetalleSolicitudComponent implements OnInit {
     if (this.nuevoEstado === 'CERRADA') {
       this.solicitudService.cerrar(s.id, this.observacionEstado).subscribe({
         next: (updated) => this.finalizarCambioEstado(updated, s.id, 'Solicitud cerrada correctamente.'),
-        error: () => this.mostrarError('Error al cerrar la solicitud.')
+        error: () => this.mostrarError('Error al cerrar la solicitud. La solicitud debe estar ATENDIDA antes de cerrarse.')
       });
       return;
     }
 
-    this.mostrarError('Ese estado debe cambiarse usando la acción correspondiente.');
+    this.mostrarError('Estado no válido.');
   }
+
 
   private finalizarCambioEstado(updated: Solicitud, id: string, mensaje: string): void {
     this.solicitud.set(updated);
