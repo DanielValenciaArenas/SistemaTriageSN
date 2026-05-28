@@ -35,6 +35,7 @@ export class SolicitudService {
     nombre: string;
     descripcion: string;
     canalOrigen: string;
+    idSolicitante: string | null;
   }): Observable<Solicitud> {
     return this.http.post<Solicitud>(this.apiUrl, dto);
   }
@@ -71,7 +72,8 @@ export class SolicitudService {
     return this.registrar({
       nombre: request.nombre,
       descripcion: request.descripcion,
-      canalOrigen: request.canalOrigen
-    });
+      canalOrigen: request.canalOrigen,
+      idSolicitante: this.authService.getUserId()
+    } as any);
   }
 }
