@@ -66,6 +66,7 @@ public class SolicitudController {
         Solicitud nueva = Solicitud.builder()
                 .nombre(dto.getNombre())
                 .descripcion(dto.getDescripcion())
+                .tipoSolicitud(dto.getTipoSolicitud())
                 .canalOrigen(dto.getCanalOrigen())
                 .solicitante(solicitante)
                 .build();

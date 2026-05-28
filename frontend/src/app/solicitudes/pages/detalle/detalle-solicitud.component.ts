@@ -7,7 +7,7 @@ import { AuthService } from '../../../auth/auth.service';
 import { SolicitudService } from '../../solicitud.service';
 import { UsuarioService } from '../../../usuarios/usuario.service';
 
-import { Solicitud, HistorialAccion } from '../../../core/models/solicitud.model';
+import { Solicitud, HistorialAccion, } from '../../../core/models/solicitud.model';
 import { Usuario } from '../../../core/models/usuario.model';
 
 @Component({
@@ -18,6 +18,7 @@ import { Usuario } from '../../../core/models/usuario.model';
   styleUrls: ['./detalle-solicitud.component.css']
 })
 export class DetalleSolicitudComponent implements OnInit {
+
 
   constructor(
     public authService: AuthService,
@@ -57,11 +58,13 @@ export class DetalleSolicitudComponent implements OnInit {
 
   private cargarSolicitud(id: string): void {
     this.solicitudService.obtener(id).subscribe({
-      next: (data) => this.solicitud.set(data),
+      next: (data) => {
+        console.log('SOLICITUD DETALLE:', data);
+        this.solicitud.set(data);
+      },
       error: () => this.mostrarError('No se pudo cargar la solicitud.')
     });
   }
-
   private cargarHistorial(id: string): void {
     this.solicitudService.historial(id).subscribe({
       next: (data) => this.historial.set(data),
@@ -73,23 +76,6 @@ export class DetalleSolicitudComponent implements OnInit {
     this.usuarioService.listar('ADMINISTRATIVO').subscribe({
       next: (data) => this.administrativos.set(data),
       error: () => {}
-    });
-  }
-
-  clasificar(): void {
-    const s = this.solicitud();
-    if (!s) return;
-
-    const tipo = prompt('Tipo de solicitud: REGISTRO_ASIGNATURA, HOMOLOGACION, CANCELACION, CUPO, CONSULTA');
-    if (!tipo) return;
-
-    this.solicitudService.clasificar(s.id, tipo as any).subscribe({
-      next: (updated) => {
-        this.solicitud.set(updated);
-        this.cargarHistorial(s.id);
-        this.mostrarExito('Solicitud clasificada correctamente.');
-      },
-      error: () => this.mostrarError('Error al clasificar la solicitud.')
     });
   }
 
@@ -190,6 +176,12 @@ export class DetalleSolicitudComponent implements OnInit {
   }
 
   confirmarEstado(): void {
+
+    if (!this.esResponsableAsignado()) {
+      this.mostrarError('Solo el responsable asignado puede cambiar el estado.');
+      return;
+    }
+
     const s = this.solicitud();
 
     if (!s || !this.nuevoEstado || !this.observacionEstado.trim()) {
@@ -197,7 +189,7 @@ export class DetalleSolicitudComponent implements OnInit {
       return;
     }
 
-    if (this.nuevoEstado === 'EN_ATENCION') {
+    if (this.nuevoEstado === 'EN_ATENCION' || this.nuevoEstado === 'ATENDIDA') {
       this.solicitudService.atender(s.id, this.observacionEstado).subscribe({
         next: (updated) => this.finalizarCambioEstado(updated, s.id, 'Estado actualizado correctamente.'),
         error: () => this.mostrarError('Error al actualizar el estado.')
@@ -208,13 +200,14 @@ export class DetalleSolicitudComponent implements OnInit {
     if (this.nuevoEstado === 'CERRADA') {
       this.solicitudService.cerrar(s.id, this.observacionEstado).subscribe({
         next: (updated) => this.finalizarCambioEstado(updated, s.id, 'Solicitud cerrada correctamente.'),
-        error: () => this.mostrarError('Error al cerrar la solicitud.')
+        error: () => this.mostrarError('Error al cerrar la solicitud. La solicitud debe estar ATENDIDA antes de cerrarse.')
       });
       return;
     }
 
-    this.mostrarError('Ese estado debe cambiarse usando la acción correspondiente.');
+    this.mostrarError('Estado no válido.');
   }
+
 
   private finalizarCambioEstado(updated: Solicitud, id: string, mensaje: string): void {
     this.solicitud.set(updated);
@@ -252,5 +245,15 @@ export class DetalleSolicitudComponent implements OnInit {
   private limpiarMensajes(): void {
     this.mensajeExito.set(null);
     this.mensajeError.set(null);
+  }
+
+  esResponsableAsignado(): boolean {
+    const s = this.solicitud();
+
+    if (!s?.responsableId) {
+      return false;
+    }
+
+    return this.authService.getUserId() === s.responsableId;
   }
 }

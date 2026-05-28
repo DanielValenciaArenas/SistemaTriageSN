@@ -34,7 +34,7 @@
 
           <div class="info-row">
             <strong>Tipo:</strong>
-            <span>{{ solicitud()!.tipoSolicitud || 'Sin clasificar' }}</span>
+            <span>{{ solicitud()?.tipoSolicitud || 'Sin clasificar' }}</span>
           </div>
 
           <div class="info-row">
@@ -68,10 +68,13 @@
             <h3>Gestión administrativa</h3>
 
             <div class="admin-actions">
-              <button class="btn btn-primary" (click)="clasificar()">Clasificar</button>
               <button class="btn btn-outline" (click)="toggleFormPriorizar()">Asignar prioridad</button>
               <button class="btn btn-outline" (click)="toggleFormAsignar()">Asignar responsable</button>
-              <button class="btn btn-outline" (click)="toggleFormEstado()">Cambiar estado</button>
+              @if (esResponsableAsignado()) {
+                <button class="btn btn-outline" (click)="toggleFormEstado()">
+                  Cambiar estado
+                </button>
+              }
             </div>
 
             @if (mostrarFormPriorizar()) {
@@ -120,15 +123,25 @@
               </div>
             }
 
-            @if (mostrarFormEstado()) {
+            @if (mostrarFormEstado() && esResponsableAsignado()) {
               <div class="admin-form">
                 <h4>Cambiar estado</h4>
 
                 <label>Estado</label>
                 <select [(ngModel)]="nuevoEstado">
                   <option value="">Seleccione un estado</option>
-                  <option value="EN_ATENCION">En atención</option>
-                  <option value="CERRADA">Cerrada</option>
+
+                  @if (solicitud()!.estado === 'REGISTRADA' || solicitud()!.estado === 'CLASIFICADA') {
+                    <option value="EN_ATENCION">En atención</option>
+                  }
+
+                  @if (solicitud()!.estado === 'EN_ATENCION') {
+                    <option value="ATENDIDA">Atendida</option>
+                  }
+
+                  @if (solicitud()!.estado === 'ATENDIDA') {
+                    <option value="CERRADA">Cerrada</option>
+                  }
                 </select>
 
                 <label>Observación</label>

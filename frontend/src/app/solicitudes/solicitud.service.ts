@@ -34,6 +34,7 @@ export class SolicitudService {
   registrar(dto: {
     nombre: string;
     descripcion: string;
+    tipoSolicitud: TipoSolicitud;
     canalOrigen: string;
     idSolicitante: string | null;
   }): Observable<Solicitud> {
@@ -72,8 +73,9 @@ export class SolicitudService {
     return this.registrar({
       nombre: request.nombre,
       descripcion: request.descripcion,
+      tipoSolicitud: request.tipoSolicitud,
       canalOrigen: request.canalOrigen,
       idSolicitante: this.authService.getUserId()
-    } as any);
+    });
   }
 }
