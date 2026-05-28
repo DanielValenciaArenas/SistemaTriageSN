@@ -1,4 +1,93 @@
-<!-- PERSONA C: implementar esta vista -->
-<div class="page-container">
-  <p>Vista "NuevoUsuarioComponent" pendiente.</p>
+<div class="page-container fade-in">
+  <div class="header-section">
+    <div>
+      <h1 class="title">{{ modoEdicion ? 'Editar Usuario' : 'Registrar Usuario' }}</h1>
+      <p class="subtitle">{{ modoEdicion ? 'Actualiza los datos del usuario seleccionado.' : 'Crea una nueva cuenta de acceso al sistema.' }}</p>
+    </div>
+    <button class="btn btn-outline" routerLink="/usuarios">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Volver a la lista
+    </button>
+  </div>
+
+  <!-- Cargando datos del usuario en modo edición -->
+  <div *ngIf="cargandoDatos()" class="loading-state">
+    <div class="spinner"></div>
+    <p>Cargando información del usuario...</p>
+  </div>
+
+  <!-- Formulario principal -->
+  <div class="form-container" *ngIf="!cargandoDatos()">
+    <div class="card glass-card form-card">
+
+      <div *ngIf="error()" class="alert-error" style="margin-bottom: 1.5rem;">
+        {{ error() }}
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <!-- Nombre -->
+          <div class="field" [class.field-error]="isInvalid('nombre')">
+            <label for="nombre">Nombre Completo</label>
+            <div class="input-icon-wrapper">
+              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <input type="text" id="nombre" formControlName="nombre" placeholder="Ej. Juan Pérez" />
+            </div>
+            <span class="error-msg" *ngIf="isInvalid('nombre')">El nombre es requerido (mín. 3 caracteres).</span>
+          </div>
+
+          <!-- Correo -->
+          <div class="field" [class.field-error]="isInvalid('correo')">
+            <label for="correo">Correo Institucional</label>
+            <div class="input-icon-wrapper">
+              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <input type="email" id="correo" formControlName="correo" placeholder="usuario@institucion.edu.co" />
+            </div>
+            <span class="error-msg" *ngIf="isInvalid('correo')">Ingresa un correo electrónico válido.</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <!-- Rol -->
+          <div class="field" [class.field-error]="isInvalid('rol')">
+            <label for="rol">Rol de Usuario</label>
+            <div class="input-icon-wrapper">
+              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <select id="rol" formControlName="rol">
+                <option value="" disabled selected>Selecciona un rol...</option>
+                <option value="ESTUDIANTE">Estudiante</option>
+                <option value="ADMINISTRATIVO">Administrativo</option>
+              </select>
+              <div class="select-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <span class="error-msg" *ngIf="isInvalid('rol')">Debes seleccionar un rol.</span>
+          </div>
+
+          <!-- Contraseña — Solo visible al crear un nuevo usuario -->
+          <div class="field" [class.field-error]="isInvalid('password')" *ngIf="!modoEdicion">
+            <label for="password">Contraseña Provisional</label>
+            <div class="input-icon-wrapper">
+              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <input type="password" id="password" formControlName="password" placeholder="Mínimo 6 caracteres" />
+            </div>
+            <span class="error-msg" *ngIf="isInvalid('password')">La contraseña debe tener al menos 6 caracteres.</span>
+          </div>
+        </div>
+
+        <!-- Botón de acción -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-lg shadow-hover" [disabled]="cargando() || form.invalid">
+            <span *ngIf="!cargando()">{{ modoEdicion ? 'Actualizar Usuario' : 'Registrar Usuario' }}</span>
+            <span *ngIf="cargando()" class="loading-text">
+              <div class="spinner-small"></div>
+              {{ modoEdicion ? 'Actualizando...' : 'Registrando...' }}
+            </span>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
 </div>

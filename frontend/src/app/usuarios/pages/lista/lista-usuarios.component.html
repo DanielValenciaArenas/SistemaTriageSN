@@ -1,4 +1,71 @@
-<!-- PERSONA C: implementar esta vista -->
-<div class="page-container">
-  <p>Vista "ListaUsuariosComponent" pendiente.</p>
+<div class="page-container fade-in">
+  <div class="header-section">
+    <div>
+      <h1 class="title">Gestión de Usuarios</h1>
+      <p class="subtitle">Administra los accesos y roles del sistema.</p>
+    </div>
+    <button class="btn btn-primary shadow-hover" routerLink="/usuarios/nuevo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+      Nuevo Usuario
+    </button>
+  </div>
+
+  <div class="card glass-card filters-section">
+    <div class="field filter-field">
+      <label for="rolFiltro">Filtrar por Rol</label>
+      <div class="select-wrapper">
+        <select id="rolFiltro" (change)="onFiltroChange($event)">
+          <option value="">Todos los roles</option>
+          <option value="ESTUDIANTE">Estudiante</option>
+          <option value="ADMINISTRATIVO">Administrativo</option>
+        </select>
+        <div class="select-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="cargando()" class="loading-state">
+    <div class="spinner"></div>
+    <p>Cargando usuarios...</p>
+  </div>
+
+  <div *ngIf="error()" class="alert-error" style="margin-bottom: 2rem;">
+    {{ error() }}
+  </div>
+
+  <div class="users-grid" *ngIf="!cargando() && usuarios().length > 0">
+    <div class="user-card hover-lift" *ngFor="let u of usuarios()">
+      <div class="user-header">
+        <div class="avatar" [ngClass]="{'avatar-admin': u.rol === 'ADMINISTRATIVO'}">
+          {{ getIniciales(u.nombre) }}
+        </div>
+        <div class="user-status" [class.active]="u.activo" [class.inactive]="!u.activo"></div>
+      </div>
+      <div class="user-info">
+        <h3 class="user-name">{{ u.nombre }}</h3>
+        <p class="user-email">{{ u.correo }}</p>
+        <span class="badge" [ngClass]="{'badge-alta': u.rol === 'ADMINISTRATIVO', 'badge-baja': u.rol === 'ESTUDIANTE'}">
+          {{ u.rol }}
+        </span>
+      </div>
+      <div class="user-actions">
+        <button class="btn btn-outline btn-icon" [routerLink]="['/usuarios/editar', u.id]" title="Editar Usuario" style="margin-right: 0.5rem; color: var(--azul-primario); border-color: var(--azul-primario);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+        </button>
+        <button class="btn btn-outline-danger btn-icon" (click)="eliminar(u.id)" title="Eliminar Usuario">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-state" *ngIf="!cargando() && usuarios().length === 0 && !error()">
+    <div class="empty-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+    </div>
+    <h3>No hay usuarios</h3>
+    <p>Aún no se han registrado usuarios con este rol o en el sistema.</p>
+  </div>
 </div>

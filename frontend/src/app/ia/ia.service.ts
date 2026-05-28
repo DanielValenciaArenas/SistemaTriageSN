@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 export interface SugerenciaIA {
   tipoSugerido: string;
   prioridadSugerida: string;
+  confianza?: number;
   justificacion: string;
 }
 
@@ -20,11 +21,11 @@ export class IaService {
 
   /** RF-10: Sugerir tipo y prioridad a partir de la descripción */
   sugerir(descripcion: string): Observable<SugerenciaIA> {
-    return this.http.post<SugerenciaIA>(`${this.api}/sugerir`, { descripcion });
+    return this.http.post<SugerenciaIA>(`${this.api}/sugerencias/clasificacion`, { descripcion });
   }
 
   /** RF-09: Generar resumen del historial de una solicitud */
-  resumir(idSolicitud: string): Observable<ResumenIA> {
-    return this.http.post<ResumenIA>(`${this.api}/resumir`, { idSolicitud });
+  resumir(solicitudId: string): Observable<ResumenIA> {
+    return this.http.post<ResumenIA>(`${this.api}/resumen`, { solicitudId });
   }
 }

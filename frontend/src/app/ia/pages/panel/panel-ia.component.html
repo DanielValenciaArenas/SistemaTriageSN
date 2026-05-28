@@ -1,4 +1,105 @@
-<!-- PERSONA C: panel de IA (RF-09 y RF-10) -->
-<div class="page-container">
-  <p>Panel IA pendiente.</p>
+<div class="page-container fade-in">
+  <div class="header-section text-center">
+    <h1 class="title">Inteligencia Artificial</h1>
+    <p class="subtitle">Asistencia inteligente para clasificar y resumir solicitudes académicas.</p>
+  </div>
+
+  <div class="ia-grid">
+    <!-- Clasificador -->
+    <div class="card glass-card ia-card">
+      <div class="card-header">
+        <div class="icon-wrapper bg-green-light">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10zm0 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z"></path><circle cx="12" cy="12" r="2"></circle></svg>
+        </div>
+        <h2>Clasificador Inteligente</h2>
+      </div>
+      <p class="card-desc">Ingresa la descripción de una solicitud y la IA te sugerirá el tipo y prioridad.</p>
+      
+      <div class="field mt-1">
+        <textarea [(ngModel)]="descripcion" rows="4" placeholder="Ej. Necesito matricular la asignatura de Programación Avanzada pero no tengo cupo..."></textarea>
+      </div>
+      
+      <button class="btn btn-primary w-100 mt-2 shadow-hover" [disabled]="!descripcion.trim() || cargandoSugerencia" (click)="obtenerSugerencia()">
+        <span *ngIf="!cargandoSugerencia">Analizar con IA</span>
+        <span *ngIf="cargandoSugerencia" class="loading-text">
+          <div class="spinner-small"></div>
+          Analizando...
+        </span>
+      </button>
+
+      <div *ngIf="errorSugerencia" class="alert-error mt-2">
+        {{ errorSugerencia }}
+      </div>
+
+      <div class="result-box mt-3 fade-in" *ngIf="sugerencia">
+        <h4>Resultado del Análisis</h4>
+        <div class="result-row">
+          <span class="result-label">Tipo Sugerido:</span>
+          <span class="badge badge-clasificada">{{ sugerencia.tipoSugerido }}</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Prioridad Sugerida:</span>
+          <span class="badge" [ngClass]="{'badge-alta': sugerencia.prioridadSugerida === 'ALTA', 'badge-media': sugerencia.prioridadSugerida === 'MEDIA', 'badge-baja': sugerencia.prioridadSugerida === 'BAJA'}">
+            {{ sugerencia.prioridadSugerida }}
+          </span>
+        </div>
+        <div class="result-row" *ngIf="sugerencia.confianza">
+          <span class="result-label">Confianza:</span>
+          <div class="progress-bar">
+            <div class="progress" [style.width.%]="sugerencia.confianza * 100"></div>
+          </div>
+          <span class="confianza-text">{{ (sugerencia.confianza * 100).toFixed(0) }}%</span>
+        </div>
+        <div class="result-justification mt-2">
+          <strong>Justificación:</strong>
+          <p>{{ sugerencia.justificacion }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generador de Resumen -->
+    <div class="card glass-card ia-card">
+      <div class="card-header">
+        <div class="icon-wrapper bg-blue-light">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="3" y2="18"></line></svg>
+        </div>
+        <h2>Generador de Resumen</h2>
+      </div>
+      <p class="card-desc">Obtén un resumen conciso del historial y atenciones de una solicitud.</p>
+
+      <div class="field mt-1">
+        <label for="solicitudId">Seleccione una Solicitud</label>
+        <div class="select-wrapper">
+          <select id="solicitudId" [(ngModel)]="solicitudId">
+            <option value="" disabled selected>Selecciona para resumir...</option>
+            <option *ngFor="let sol of solicitudes" [value]="sol.id">
+              {{ sol.nombre }} ({{ sol.estado }})
+            </option>
+          </select>
+          <div class="select-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-outline w-100 mt-2" [disabled]="!solicitudId.trim() || cargandoResumen" (click)="obtenerResumen()">
+        <span *ngIf="!cargandoResumen">Generar Resumen</span>
+        <span *ngIf="cargandoResumen" class="loading-text">
+          <div class="spinner-small" style="border-top-color: var(--verde-medio);"></div>
+          Generando...
+        </span>
+      </button>
+
+      <div *ngIf="errorResumen" class="alert-error mt-2">
+        {{ errorResumen }}
+      </div>
+
+      <div class="result-box mt-3 fade-in summary-box" *ngIf="resumen">
+        <h4>Resumen Generado</h4>
+        <div class="summary-content">
+          <p>{{ resumen.resumen }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

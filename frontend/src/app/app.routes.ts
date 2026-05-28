@@ -52,6 +52,13 @@ export const routes: Routes = [
             .then(m => m.NuevoUsuarioComponent)
       },
       {
+        path: 'usuarios/editar/:id',
+        canActivate: [adminGuard],
+        loadComponent: () =>
+          import('./usuarios/pages/nuevo/nuevo-usuario.component')
+            .then(m => m.NuevoUsuarioComponent)
+      },
+      {
         path: 'ia',
         canActivate: [adminGuard],
         loadComponent: () =>
