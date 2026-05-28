@@ -176,6 +176,12 @@ export class DetalleSolicitudComponent implements OnInit {
   }
 
   confirmarEstado(): void {
+
+    if (!this.esResponsableAsignado()) {
+      this.mostrarError('Solo el responsable asignado puede cambiar el estado.');
+      return;
+    }
+
     const s = this.solicitud();
 
     if (!s || !this.nuevoEstado || !this.observacionEstado.trim()) {
@@ -239,5 +245,15 @@ export class DetalleSolicitudComponent implements OnInit {
   private limpiarMensajes(): void {
     this.mensajeExito.set(null);
     this.mensajeError.set(null);
+  }
+
+  esResponsableAsignado(): boolean {
+    const s = this.solicitud();
+
+    if (!s?.responsableId) {
+      return false;
+    }
+
+    return this.authService.getUserId() === s.responsableId;
   }
 }
