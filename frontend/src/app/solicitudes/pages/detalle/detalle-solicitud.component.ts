@@ -7,7 +7,7 @@ import { AuthService } from '../../../auth/auth.service';
 import { SolicitudService } from '../../solicitud.service';
 import { UsuarioService } from '../../../usuarios/usuario.service';
 
-import { Solicitud, HistorialAccion } from '../../../core/models/solicitud.model';
+import { Solicitud, HistorialAccion, } from '../../../core/models/solicitud.model';
 import { Usuario } from '../../../core/models/usuario.model';
 
 @Component({
@@ -18,6 +18,7 @@ import { Usuario } from '../../../core/models/usuario.model';
   styleUrls: ['./detalle-solicitud.component.css']
 })
 export class DetalleSolicitudComponent implements OnInit {
+
 
   constructor(
     public authService: AuthService,
@@ -57,11 +58,13 @@ export class DetalleSolicitudComponent implements OnInit {
 
   private cargarSolicitud(id: string): void {
     this.solicitudService.obtener(id).subscribe({
-      next: (data) => this.solicitud.set(data),
+      next: (data) => {
+        console.log('SOLICITUD DETALLE:', data);
+        this.solicitud.set(data);
+      },
       error: () => this.mostrarError('No se pudo cargar la solicitud.')
     });
   }
-
   private cargarHistorial(id: string): void {
     this.solicitudService.historial(id).subscribe({
       next: (data) => this.historial.set(data),
@@ -73,23 +76,6 @@ export class DetalleSolicitudComponent implements OnInit {
     this.usuarioService.listar('ADMINISTRATIVO').subscribe({
       next: (data) => this.administrativos.set(data),
       error: () => {}
-    });
-  }
-
-  clasificar(): void {
-    const s = this.solicitud();
-    if (!s) return;
-
-    const tipo = prompt('Tipo de solicitud: REGISTRO_ASIGNATURA, HOMOLOGACION, CANCELACION, CUPO, CONSULTA');
-    if (!tipo) return;
-
-    this.solicitudService.clasificar(s.id, tipo as any).subscribe({
-      next: (updated) => {
-        this.solicitud.set(updated);
-        this.cargarHistorial(s.id);
-        this.mostrarExito('Solicitud clasificada correctamente.');
-      },
-      error: () => this.mostrarError('Error al clasificar la solicitud.')
     });
   }
 

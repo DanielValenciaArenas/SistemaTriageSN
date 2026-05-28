@@ -34,7 +34,7 @@
 
           <div class="info-row">
             <strong>Tipo:</strong>
-            <span>{{ solicitud()!.tipoSolicitud || 'Sin clasificar' }}</span>
+            <span>{{ solicitud()?.tipoSolicitud || 'Sin clasificar' }}</span>
           </div>
 
           <div class="info-row">
@@ -68,7 +68,6 @@
             <h3>Gestión administrativa</h3>
 
             <div class="admin-actions">
-              <button class="btn btn-primary" (click)="clasificar()">Clasificar</button>
               <button class="btn btn-outline" (click)="toggleFormPriorizar()">Asignar prioridad</button>
               <button class="btn btn-outline" (click)="toggleFormAsignar()">Asignar responsable</button>
               <button class="btn btn-outline" (click)="toggleFormEstado()">Cambiar estado</button>
