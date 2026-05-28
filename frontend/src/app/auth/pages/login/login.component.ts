@@ -28,8 +28,14 @@ export class LoginComponent {
     this.error   = '';
 
     this.auth.login(this.correo, this.password).subscribe({
-      next: () => this.router.navigate(['/home']),
-      error: () => { this.error = 'Correo o contraseña incorrectos.'; this.loading = false; }
+      next: () => {
+        this.loading = false;
+        this.router.navigate(['/home']);
+      },
+      error: () => {
+        this.error = 'Correo o contraseña incorrectos.';
+        this.loading = false;
+      }
     });
   }
 }

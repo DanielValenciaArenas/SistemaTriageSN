@@ -1,1 +1,40 @@
-/* PERSONA B */
+.form-page {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 18px;
+  padding: 2rem;
+  border: 1px solid var(--gris-borde);
+  box-shadow: var(--sombra-md);
+}
+
+.form-header {
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: .85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--gris-borde);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}

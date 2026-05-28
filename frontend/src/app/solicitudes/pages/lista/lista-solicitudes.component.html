@@ -1,4 +1,79 @@
-<!-- PERSONA B: implementar esta vista -->
-<div class="page-container">
-  <p>Vista "ListaSolicitudesComponent" pendiente.</p>
+<div class="solicitudes-page">
+
+  <div class="page-header">
+    <div>
+      <span class="page-badge">Gestión académica</span>
+      <h1>Solicitudes</h1>
+      <p>Consulta y administra las solicitudes registradas en el sistema.</p>
+    </div>
+
+    <a routerLink="/solicitudes/nueva" class="btn btn-primary">
+      + Nueva solicitud
+    </a>
+  </div>
+
+  <div class="filters-card">
+
+    <select [ngModel]="estadoFiltro()" (ngModelChange)="estadoFiltro.set($event)">
+      <option value="">Todos los estados</option>
+      <option value="REGISTRADA">Registrada</option>
+      <option value="CLASIFICADA">Clasificada</option>
+      <option value="EN_ATENCION">En atención</option>
+      <option value="ATENDIDA">Atendida</option>
+      <option value="CERRADA">Cerrada</option>
+    </select>
+
+    <select [ngModel]="tipoFiltro()" (ngModelChange)="tipoFiltro.set($event)">
+      <option value="">Todos los tipos</option>
+      <option value="REGISTRO_ASIGNATURA">Registro de asignatura</option>
+      <option value="HOMOLOGACION">Homologación</option>
+      <option value="CANCELACION">Cancelación</option>
+      <option value="CUPO">Cupo</option>
+      <option value="CONSULTA">Consulta</option>
+    </select>
+
+    <select [ngModel]="prioridadFiltro()" (ngModelChange)="prioridadFiltro.set($event)">
+      <option value="">Todas las prioridades</option>
+      <option value="ALTA">Alta</option>
+      <option value="MEDIA">Media</option>
+      <option value="BAJA">Baja</option>
+    </select>
+
+  </div>
+
+  <div class="cards-grid">
+
+    @for (solicitud of solicitudesFiltradas(); track solicitud.id) {
+
+      <div class="solicitud-card">
+
+        <div class="card-top">
+        <span class="badge estado-{{ solicitud.estado.toLowerCase() }}">
+          {{ solicitud.estado }}
+        </span>
+
+          <span class="prioridad prioridad-{{ solicitud.prioridad?.toLowerCase() || 'sin-prioridad' }}">
+          {{ solicitud.prioridad || 'Sin prioridad' }}
+        </span>
+        </div>
+
+        <h3>{{ solicitud.nombre }}</h3>
+
+        <p>{{ solicitud.descripcion }}</p>
+
+        <div class="card-info">
+          <span>📂 {{ solicitud.tipoSolicitud }}</span>
+          <span>📅 {{ solicitud.fechaRegistro | date }}</span>
+        </div>
+
+        <a [routerLink]="['/solicitudes', solicitud.id]" class="btn btn-outline">
+          Ver detalle
+        </a>
+
+      </div>
+
+    }
+
+  </div>
+
 </div>

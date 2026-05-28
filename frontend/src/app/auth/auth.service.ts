@@ -30,13 +30,13 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('auth');
+    sessionStorage.removeItem('auth');;
     this.currentUser.set(null);
     this.router.navigate(['/login']);
   }
 
   private saveSession(res: LoginResponse): void {
-    localStorage.setItem('auth', JSON.stringify(res));
+    sessionStorage.setItem('auth', JSON.stringify(res));
     this.currentUser.set(res);
   }
 
@@ -49,7 +49,7 @@ export class AuthService {
 
   private loadFromStorage(): LoginResponse | null {
     try {
-      const raw = localStorage.getItem('auth');
+      const raw = sessionStorage.getItem('auth');
       return raw ? JSON.parse(raw) : null;
     } catch { return null; }
   }

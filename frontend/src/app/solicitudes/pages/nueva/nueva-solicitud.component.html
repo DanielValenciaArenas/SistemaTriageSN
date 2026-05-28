@@ -1,4 +1,56 @@
-<!-- PERSONA B: implementar esta vista -->
-<div class="page-container">
-  <p>Vista "NuevaSolicitudComponent" pendiente.</p>
+<div class="form-page">
+
+  <div class="form-card">
+
+    <div class="form-header">
+      <span class="page-badge">Registro</span>
+      <h1>Nueva solicitud</h1>
+      <p>Completa la información para registrar la solicitud académica.</p>
+    </div>
+
+    <form (ngSubmit)="guardar()">
+
+      <div class="form-group">
+        <label>Título</label>
+        <input type="text" [(ngModel)]="request.nombre" name="nombre">
+      </div>
+
+      <div class="form-group">
+        <label>Descripción</label>
+        <textarea rows="5" [(ngModel)]="request.descripcion" name="descripcion"></textarea>
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group">
+          <label>Tipo</label>
+
+          <select [(ngModel)]="request.tipoSolicitud" name="tipoSolicitud">
+            <option value="REGISTRO_ASIGNATURA">Registro de asignatura</option>
+            <option value="HOMOLOGACION">Homologación</option>
+            <option value="CANCELACION">Cancelación</option>
+            <option value="CUPO">Cupo</option>
+            <option value="CONSULTA">Consulta</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Canal</label>
+
+          <select [(ngModel)]="request.canalOrigen" name="canalOrigen">
+            <option value="PORTAL_WEB">Portal web</option>
+            <option value="CORREO">Correo</option>
+          </select>
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary" type="submit">
+        Registrar solicitud
+      </button>
+
+    </form>
+
+  </div>
+
 </div>

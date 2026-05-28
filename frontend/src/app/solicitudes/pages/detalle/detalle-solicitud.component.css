@@ -1,1 +1,60 @@
-/* PERSONA B */
+.detalle-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.detalle-card,
+.historial-card {
+  background: white;
+  border-radius: 18px;
+  padding: 2rem;
+  border: 1px solid var(--gris-borde);
+  box-shadow: var(--sombra-sm);
+  margin-bottom: 1.5rem;
+}
+
+.detalle-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+.detalle-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.info-box {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--verde-medio);
+  margin-top: .35rem;
+}
+
+.timeline-content {
+  flex: 1;
+  border-left: 2px solid var(--gris-borde);
+  padding-left: 1rem;
+}

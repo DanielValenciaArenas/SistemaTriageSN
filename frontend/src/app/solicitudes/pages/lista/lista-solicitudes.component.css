@@ -1,1 +1,76 @@
-/* PERSONA B */
+.solicitudes-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+  padding: 2rem;
+  border-radius: 18px;
+  color: white;
+  box-shadow: var(--sombra-md);
+}
+
+.page-badge {
+  background: rgba(255,255,255,.2);
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  font-size: .8rem;
+}
+
+.filters-card {
+  background: white;
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--gris-borde);
+  box-shadow: var(--sombra-sm);
+}
+
+.filters-card select {
+  padding: .75rem;
+  border-radius: 10px;
+  border: 1px solid var(--gris-borde);
+  min-width: 200px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.solicitud-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--gris-borde);
+  box-shadow: var(--sombra-sm);
+  transition: .2s;
+}
+
+.solicitud-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-md);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  margin: 1rem 0;
+  color: var(--gris-texto);
+}
