@@ -1,79 +1,180 @@
 <div class="detalle-page">
 
-  <div class="detalle-card">
+  @if (mensajeExito()) {
+    <div class="alert alert-success">
+      {{ mensajeExito() }}
+    </div>
+  }
 
-    <div class="detalle-header">
-      <div>
-        <span class="badge estado-{{ solicitud().estado.toLowerCase() }}">
-          {{ solicitud().estado }}
-        </span>
+  @if (mensajeError()) {
+    <div class="alert alert-error">
+      {{ mensajeError() }}
+    </div>
+  }
 
-        <h1>{{ solicitud().nombre }}</h1>
+  @if (solicitud()) {
+
+    <div class="detalle-card">
+
+      <div class="detalle-header">
+        <div>
+          <span class="badge estado-{{ solicitud()!.estado.toLowerCase() }}">
+            {{ solicitud()!.estado }}
+          </span>
+
+          <h1>{{ solicitud()!.nombre }}</h1>
+          <p>{{ solicitud()!.descripcion }}</p>
+        </div>
       </div>
 
-      @if (authService.isAdmin()) {
+      <div class="detalle-grid">
 
-        <div class="acciones">
-          <button class="btn btn-primary" (click)="clasificar()">Clasificar</button>
-          <button class="btn btn-outline" (click)="priorizar()">Priorizar</button>
-          <button class="btn btn-outline" (click)="asignar()">Asignar</button>
-          <button class="btn btn-outline" (click)="atender()">Atender</button>
-          <button class="btn btn-danger" (click)="cerrar()">Cerrar</button>
+        <div class="info-box">
+          <h3>Información general</h3>
+
+          <div class="info-row">
+            <strong>Tipo:</strong>
+            <span>{{ solicitud()!.tipoSolicitud || 'Sin clasificar' }}</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Prioridad:</strong>
+            <span>{{ solicitud()!.prioridad || 'Sin prioridad' }}</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Responsable:</strong>
+            <span>{{ nombreResponsable() }}</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Canal:</strong>
+            <span>{{ solicitud()!.canalOrigen }}</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Estado:</strong>
+            <span>{{ solicitud()!.estado }}</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Fecha de registro:</strong>
+            <span>{{ solicitud()!.fechaRegistro | date:'short' }}</span>
+          </div>
         </div>
 
+        @if (authService.isAdmin()) {
+          <div class="info-box admin-panel">
+            <h3>Gestión administrativa</h3>
+
+            <div class="admin-actions">
+              <button class="btn btn-primary" (click)="clasificar()">Clasificar</button>
+              <button class="btn btn-outline" (click)="toggleFormPriorizar()">Asignar prioridad</button>
+              <button class="btn btn-outline" (click)="toggleFormAsignar()">Asignar responsable</button>
+              <button class="btn btn-outline" (click)="toggleFormEstado()">Cambiar estado</button>
+            </div>
+
+            @if (mostrarFormPriorizar()) {
+              <div class="admin-form">
+                <h4>Asignar prioridad</h4>
+
+                <label>Prioridad</label>
+                <select [(ngModel)]="nuevaPrioridad">
+                  <option value="">Seleccione una prioridad</option>
+                  <option value="ALTA">Alta</option>
+                  <option value="MEDIA">Media</option>
+                  <option value="BAJA">Baja</option>
+                </select>
+
+                <label>Justificación</label>
+                <textarea
+                  rows="3"
+                  [(ngModel)]="justificacion"
+                  placeholder="Ingrese la justificación de la prioridad">
+                </textarea>
+
+                <button class="btn btn-primary" (click)="confirmarPriorizar()">
+                  Guardar prioridad
+                </button>
+              </div>
+            }
+
+            @if (mostrarFormAsignar()) {
+              <div class="admin-form">
+                <h4>Asignar responsable</h4>
+
+                <label>Responsable</label>
+                <select [(ngModel)]="responsableSeleccionado">
+                  <option value="">Seleccione un responsable</option>
+
+                  @for (admin of administrativos(); track admin.id) {
+                    <option [value]="admin.id">
+                      {{ admin.nombre }} - {{ admin.correo }}
+                    </option>
+                  }
+                </select>
+
+                <button class="btn btn-primary" (click)="confirmarAsignar()">
+                  Guardar responsable
+                </button>
+              </div>
+            }
+
+            @if (mostrarFormEstado()) {
+              <div class="admin-form">
+                <h4>Cambiar estado</h4>
+
+                <label>Estado</label>
+                <select [(ngModel)]="nuevoEstado">
+                  <option value="">Seleccione un estado</option>
+                  <option value="EN_ATENCION">En atención</option>
+                  <option value="CERRADA">Cerrada</option>
+                </select>
+
+                <label>Observación</label>
+                <textarea
+                  rows="3"
+                  [(ngModel)]="observacionEstado"
+                  placeholder="Ingrese una observación del cambio de estado">
+                </textarea>
+
+                <button class="btn btn-primary" (click)="confirmarEstado()">
+                  Guardar estado
+                </button>
+              </div>
+            }
+
+          </div>
+        }
+
+      </div>
+
+    </div>
+
+    <div class="historial-card">
+      <h2>Historial auditable</h2>
+
+      @if (historial().length === 0) {
+        <p class="empty-text">No hay movimientos registrados.</p>
       }
 
+      @for (item of historial(); track item.fechaAccion) {
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <h4>{{ item.accion }}</h4>
+            <p>{{ item.observacion }}</p>
+            <small>
+              {{ item.actorNombre }} — {{ item.fechaAccion | date:'short' }}
+            </small>
+          </div>
+        </div>
+      }
     </div>
 
-    <div class="detalle-grid">
-
-      <div class="info-box">
-        <h3>Descripción</h3>
-        <p>{{ solicitud().descripcion }}</p>
-      </div>
-
-      <div class="info-box">
-        <h3>Información general</h3>
-
-        <div class="info-row">
-          <strong>Tipo:</strong>
-          <span>{{ solicitud().tipoSolicitud }}</span>
-        </div>
-
-        <div class="info-row">
-          <strong>Prioridad:</strong>
-          <span>{{ solicitud().prioridad }}</span>
-        </div>
-
-        <div class="info-row">
-          <strong>Responsable:</strong>
-          <span>{{ solicitud().responsableId }}</span>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="historial-card">
-
-    <h2>Historial auditable</h2>
-
-    @for (item of historial(); track item.fechaAccion) {
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-content">
-          <h4>{{ item.accion }}</h4>
-          <p>{{ item.observacion }}</p>
-
-          <small>
-            {{ item.actorNombre }} — {{ item.fechaAccion | date:'short' }}
-          </small>
-        </div>
-      </div>
-    }
-
-  </div>
+  } @else {
+    <p class="loading-text">Cargando solicitud...</p>
+  }
 
 </div>
